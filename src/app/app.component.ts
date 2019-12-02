@@ -82,11 +82,11 @@ export class AppComponent implements OnInit {
     }
     this.widthRatio = this.selectedImageWidth / this.maskCanvas.width;
     this.heightRatio = this.selectedImageHeight / this.maskCanvas.height;
-    this.imgCurrentHeight = $scope.maskImg.currentHeight;
-    this.imgCurrentWidth = $scope.maskImg.currentWidth;
+    this.imgCurrentHeight = 500;
+    this.imgCurrentWidth = 500;
     this.imagePixelsCanvas.width = this.fillcanvas.width = this.selectedImageWidth;
     this.imagePixelsCanvas.height = this.fillcanvas.height = this.selectedImageHeight;
-    const newImg = new Image();
+    let newImg = new Image();
     newImg.crossOrigin = 'anonymous';
     newImg.onload = () => {
       var tempCvs = document.createElement("canvas");
@@ -95,12 +95,12 @@ export class AppComponent implements OnInit {
       tempCtx.canvas.height = this.selectedImageHeight;
       tempCtx.drawImage(newImg, 0, 0, tempCvs.width, tempCvs.height);
       //$('.xe-img-footer-wrap').html(tempCvs);
-      imageInfo = {
+      this.imageInfo = {
         width: this.selectedImageWidth,
         height: this.selectedImageHeight,
         context: imagePixelsCanvas.getContext("2d")
       };
-      imageInfo.data = tempCtx.getImageData(0, 0, this.selectedImageWidth, this.selectedImageHeight);
+      this.imageInfo.data = tempCtx.getImageData(0, 0, this.selectedImageWidth, this.selectedImageHeight);
       tempCtx = tempCvs = null;
       newImg = null;
     }
@@ -189,7 +189,7 @@ export class AppComponent implements OnInit {
     aPointX = dPoint.x - extWtX / 2;
     aPointY = dPoint.y - extHtY / 2;
     if ((dPoint.x > discardWt.x1 && dPoint.x < discardWt.x2) && (dPoint.y > discardHt.x1 && dPoint.y < discardHt.x2)) {
-      if ((this.selectedImageWidth == parseInt(imgCurrentWidth)) &&
+      if ((this.selectedImageWidth == parseInt(this.imgCurrentWidth)) &&
         (this.selectedImageHeight == parseInt(imgCurrentHeight))) {
         dPoint.x = parseInt((dPoint.x * mulWidth).toFixed());
         dPoint.y = parseInt((dPoint.y * mulHeight).toFixed());
