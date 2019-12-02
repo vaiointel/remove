@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import MagicWand from './libs/magic-wand-js';
+import MagicWand from './../libs/magic-wand.js';
 export interface DOWNPOINT {
   x: number;
   y: number;

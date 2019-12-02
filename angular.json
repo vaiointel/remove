@@ -25,7 +25,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/magic-wand-js/js/magic-wand.js"]
+            "scripts": ["./src/libs/magic-wand.js"]
           },
           "configurations": {
             "production": {
