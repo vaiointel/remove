@@ -1,4 +1,21 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <span style="color:red;" *ngIf="message">{{message}}</span>
+  <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+</div>
+<div style="height: 12vh; width: auto">
+  <img [src]="imgURL" height="200" *ngIf="imgURL">
+</div>
+<div class="imageEdit-editor" id="imageEdit_canvas" style="display: none">
+  <canvas class="canvas_maskEditContainer" #canvas_maskEditContainer height="320" id="canvas_mask" width="320"></canvas>
+  <div class="image_edit_blank_div"></div>
+  <div class="canvas-container"
+    style="width: 100%; height: 100%; position: absolute; top: 0; text-align: center; user-select: none;display: flex;">
+    <canvas id="borderMaskSelectCanvas" #borderMaskSelectCanvas (mousedown)="onMouseDown($event)" (mousemove)="onMouseUp($event)"
+      (mouseleave)="onMouseLeave($event)"></canvas>
+  </div>
+  <div>
+    <canvas #fillcanvas></canvas>
+    <canvas #imagePixelsCanvas></canvas>
+  </div>
+</div>
